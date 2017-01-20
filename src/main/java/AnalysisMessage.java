@@ -9,17 +9,6 @@ import java.util.HashMap;
 public class AnalysisMessage
 {
     private String message;
-    private HashMap<Character, Integer> characterMap;
-
-    public HashMap<Character, Integer> getCharacterMap()
-    {
-        return characterMap;
-    }
-
-    public void setCharacterMap(HashMap<Character, Integer> characterMap)
-    {
-        this.characterMap = characterMap;
-    }
 
     public AnalysisMessage(){
         message = "";
@@ -66,7 +55,7 @@ public class AnalysisMessage
 
     public HashMap<Character, Integer> mapCharacterOccurrences()
     {
-        characterMap = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> characterMap = new HashMap<Character, Integer>();
 
         for(int currentCharacter = 0; currentCharacter < message.length(); currentCharacter++){
             if(characterMap.containsKey(message.charAt(currentCharacter)))
@@ -85,22 +74,25 @@ public class AnalysisMessage
     public int countNumberOfCharacters(){
         int numberOfCharacters = 0;
         for(int currentCharacter = 0; currentCharacter < message.length(); currentCharacter++){
-            if(characterMap.containsKey(message.charAt(currentCharacter)))
-            {
-                characterMap.put(message.charAt(currentCharacter), characterMap.get(message.charAt(currentCharacter)) + 1);
-            }
-            else
-            {
-                characterMap.put(message.charAt(currentCharacter), 1);
-            }
-
             numberOfCharacters++;
         }
 
         return numberOfCharacters;
     }
 
+
     public void printCharacterMap(){
 
+    }
+
+    public void analyse() throws IOException
+    {
+        int wordCount = countWords();
+        int numberOfCharacters = countNumberOfCharacters();
+        HashMap<Character, Integer> characterMap = mapCharacterOccurrences();
+
+        createMessageFromFile();
+        System.out.println("Words: " + countWords());
+        System.out.println("Characters: " + countNumberOfCharacters());
     }
 }

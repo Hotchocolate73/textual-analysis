@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class InputTest
 {
     @Test
-    @Ignore
     public void createMessageFromFileSuccessfully() throws IOException
     {
         AnalysisMessage message = new AnalysisMessage();
@@ -20,9 +19,6 @@ public class InputTest
         message.createMessageFromFile();
 
         assertNotEquals(message.getMessage(), "");
-        //System.out.println(message.getMessage());
-        System.out.println("Words: " + message.countWords());
-        System.out.println("Characters: " + message.countCharacterOccurrences());
     }
 
     @Test
@@ -40,7 +36,7 @@ public class InputTest
         AnalysisMessage message = new AnalysisMessage();
 
         message.setMessage("Hi\n");
-        int characterCount = message.countCharacterOccurrences();
+        int characterCount = message.countNumberOfCharacters();
         assertEquals(characterCount, 3);
     }
 }
