@@ -41,12 +41,10 @@ public class AnalysisMessage
         BufferedReader textReader = new BufferedReader(fr);
 
         String finalOutput = "";
-        int counter = 1;
         String currentLine;
 
         while((currentLine = textReader.readLine()) != null){
             finalOutput += currentLine + "\n";
-            counter++;
         }
 
         textReader.close();
@@ -66,10 +64,25 @@ public class AnalysisMessage
         return wordCount;
     }
 
-    public int countCharacterOccurrences()
+    public HashMap<Character, Integer> mapCharacterOccurrences()
     {
         characterMap = new HashMap<Character, Integer>();
 
+        for(int currentCharacter = 0; currentCharacter < message.length(); currentCharacter++){
+            if(characterMap.containsKey(message.charAt(currentCharacter)))
+            {
+                characterMap.put(message.charAt(currentCharacter), characterMap.get(message.charAt(currentCharacter)) + 1);
+            }
+            else
+            {
+                characterMap.put(message.charAt(currentCharacter), 1);
+            }
+        }
+
+        return characterMap;
+    }
+
+    public int countNumberOfCharacters(){
         int numberOfCharacters = 0;
         for(int currentCharacter = 0; currentCharacter < message.length(); currentCharacter++){
             if(characterMap.containsKey(message.charAt(currentCharacter)))
