@@ -87,12 +87,13 @@ public class AnalysisMessage
 
     public void analyse() throws IOException
     {
+        createMessageFromFile();
         int wordCount = countWords();
         int numberOfCharacters = countNumberOfCharacters();
         HashMap<Character, Integer> characterMap = mapCharacterOccurrences();
 
-        createMessageFromFile();
         System.out.println("Words: " + countWords());
         System.out.println("Characters: " + countNumberOfCharacters());
+        System.out.println(characterMap);
     }
 }
